@@ -1,4 +1,4 @@
-# Extracci√U+00Fn  de formas de onda de Seiscomp3
+# ExtracciU+00F3n  de formas de onda de Seiscomp3
 
 Esta rutina permite extraer formas de onda en formato miniSEED desde el servidor de Seiscomp3.
 Esto se h¬ace utilizando el servicio web FDSN mediante m√≥dulos de ObsPy.
