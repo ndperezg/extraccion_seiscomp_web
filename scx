@@ -29,9 +29,9 @@ t = UTCDateTime(year, MM, dd, hh, mm)
 t_ = float(sys.argv[2])
 
 if len(sys.argv)>2:
-	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+archive_name(sys.argv[3:])+"."+Format
+	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)+archive_name(sys.argv[3:])+"."+Format
 else:
-	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+"."+Format 
+	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)"."+Format 
 
 #print t, t_
 
