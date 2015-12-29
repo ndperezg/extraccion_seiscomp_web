@@ -31,7 +31,7 @@ t_ = float(sys.argv[2])
 if len(sys.argv)>2:
 	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)+archive_name(sys.argv[3:])+"."+Format
 else:
-	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)"."+Format 
+	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)+"."+Format 
 
 #print t, t_
 
