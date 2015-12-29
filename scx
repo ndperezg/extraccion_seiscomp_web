@@ -14,7 +14,7 @@ def request(client, t1, t2, AG="CM", STA="*", LOC="?0", CHA="*"):
 	st = client.get_waveforms(AG, STA, LOC, CHA, t1, t2)
 	return st
 def archive_name(lista):
-	name = "_"
+	name = ""
 	for l in lista:
 		name += "_"+l
 	return name
@@ -29,16 +29,16 @@ t = UTCDateTime(year, MM, dd, hh, mm)
 t_ = float(sys.argv[2])
 
 if len(sys.argv)>2:
-	name = str(t)+archive_name(sys.argv[3:])+"."+Format
+	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+archive_name(sys.argv[3:])+"."+Format
 else:
-	name = str(t)+"."+Format 
+	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+"."+Format 
 
 #print t, t_
 
 client_sc = Client(ip_fdsn+":"+port_fdsn)
 print client_sc
 
-if len(sys.argv) == 2:
+if len(sys.argv) == 3:
 	st = request(client = client_sc, t1 = t, t2= t + t_)
 	print st
 if len(sys.argv) == 4:
@@ -54,6 +54,6 @@ elif len(sys.argv) == 7:
 	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA=sys.argv[4],LOC=sys.argv[5],CHA=sys.argv[6])
 	print st
 
-st.write(name, format=Format)
+st.write(name, Format)
 	
 	
