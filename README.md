@@ -22,6 +22,6 @@ la informacion de la agencia CM.
 `$ ./scx YYYYMMddhhmmss tttt AG STA LOC CHA` 
 
 Es posible especificar la agencia, estacion, codigo de localizacion y canal. El uso de wildcards de
-unix es permitido. 
+unix es permitido siempre y cuando se ingrese el argumento entre comillas, ej: '*'. 
 
 
