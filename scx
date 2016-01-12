@@ -46,7 +46,7 @@ print client
 
 
 if len(sys.argv) == 6:
-	st = client.get_waveforms("*", "*", "*", "*", t, t+t_)
+	st = client.get_waveforms("CM", "*", "?0", "*", t, t+t_)
 	print st
 
 if len(sys.argv) == 7:
