@@ -42,13 +42,13 @@ if len(sys.argv) == 3:
 	st = request(client = client_sc, t1 = t, t2= t + t_)
 	print st
 if len(sys.argv) == 4:
-	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3])
+	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA = "*", LOC = "*", CHA= "*")
         print st
 elif len(sys.argv) == 5:
-	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA=sys.argv[4])
+	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA=sys.argv[4], LOC = "*", CHA = "*")
 	print st
 elif len(sys.argv) == 6:
-	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA=sys.argv[4], LOC=sys.argv[5])
+	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA=sys.argv[4], LOC=sys.argv[5], CHA = "*")
 	print st
 elif len(sys.argv) == 7:
 	st = request(client = client_sc, t1 = t, t2= t + t_, AG=sys.argv[3], STA=sys.argv[4],LOC=sys.argv[5],CHA=sys.argv[6])
