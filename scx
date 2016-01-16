@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 """
 Script que permite realizar extracciones del servido de seiscomp mediante el servicio web fdsn
+v(1) Nelson David Perez e-mail: nperez@sgc.gov.co
 """
 from obspy import UTCDateTime
 from obspy.fdsn.client import Client
 import sys
 
+#Se define url del servidor, puerto y formato
+
 ip_fdsn = "http://10.100.100.232"
 port_fdsn = "8091"
 Format = "mseed"
 
+#funcion que crea un nombre a partir de parametros de entrada
 def archive_name(lista):
 	name = ""
 	for l in lista:
@@ -20,6 +24,7 @@ def archive_name(lista):
 		else:
 			name += "_"
 	return name
+#Se revisan los parametros de entrada
 
 if len(sys.argv) < 2:
 	print "No hay parametros de entrada"
@@ -27,24 +32,22 @@ if len(sys.argv) < 2:
 if len(sys.argv) > 10:
 	print "Demasiados argumentos"
 	sys.exit()
-year, MM, dd, hh, mm, ss = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4][0:2]), int(sys.argv[4][2:4]), int(sys.argv[4][4:6])
+year, MM, dd, hh, mm, ss = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4][0:2], sys.argv[4][2:4], sys.argv[4][4:6]
 
-t = UTCDateTime(year, MM, dd, hh, mm, ss)
+#Se define el tiempo y el nombre de la traza
+
+t = UTCDateTime(int(year), int(MM), int(dd), int(hh), int(mm), int(ss))
 t_ = float(sys.argv[5])
-
-if len(sys.argv)>2:
-	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)+archive_name(sys.argv[3:])+"."+Format
-else:
-	name = str(year)+"-"+str(MM)+"-"+str(dd)+"-"+str(hh)+str(mm)+"."+Format 
+name = year+"-"+MM+"-"+dd+"-"+hh+mm+ss+archive_name(sys.argv[5:])+"."+Format
 
 print t, t_
 
-
+#Se inicia el cliente FDSN para la solicitud
 client = Client(ip_fdsn+":"+port_fdsn)
 print client
 
 
-
+#Se realizan solicitudes de formas de onda
 if len(sys.argv) == 6:
 	st = client.get_waveforms("*", "*", "*", "*", t, t+t_)
 	print st
@@ -64,5 +67,6 @@ if len(sys.argv) == 10:
 	st = client.get_waveforms(sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9], t, t+t_)
         print st
 
+#Se escribe la forma de onda con el directorio local
 st.write(name, Format)
 	
