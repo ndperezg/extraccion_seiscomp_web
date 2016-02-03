@@ -9,6 +9,7 @@ from obspy.fdsn.client import Client
 from datetime import timedelta
 import sys
 
+
 #Se define url del servidor, puerto y formato
 
 ip_fdsn = "http://10.100.100.232"
@@ -60,6 +61,7 @@ client = Client(ip_fdsn+":"+port_fdsn)
 
 while t < t_fin:
 	st = client.get_waveforms("*", "*", "*", "*", t-two, t+dt)
+	st.merge(method=0, fill_value='interpolate', interpolation_samples=0)
 	time = str(t-two).split('T')[1].split('.')[0].split(":")
 	hh, mm, ss = time[0], time[1], time[2]
 	name = year+"-"+MM+"-"+dd+"-"+hh+mm+"-"+ss+"M.COL___"+str(len(st))
