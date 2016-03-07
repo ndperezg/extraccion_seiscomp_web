@@ -61,20 +61,24 @@ if len(sys.argv) == 6:
 if len(sys.argv) == 7:
 	st = client.get_waveforms(sys.argv[6], "*", "*", "*", t, t+t_)
 	#st.merge()
+	st.merge(method=0, fill_value='interpolate', interpolation_samples=0)
         print st
 
 if len(sys.argv) == 8:
 	st = client.get_waveforms(sys.argv[6], sys.argv[7], "*", "*", t, t+t_)
 	#st.merge()
+	st.merge(method=0, fill_value='interpolate', interpolation_samples=0)
         print st
 
 if len(sys.argv) == 9:
 	st = client.get_waveforms(sys.argv[6], sys.argv[7], sys.argv[8], "*", t, t+t_)
 	#st.merge()
+	st.merge(method=0, fill_value='interpolate', interpolation_samples=0)
         print st
 if len(sys.argv) == 10:
 	st = client.get_waveforms(sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9], t, t+t_)
 	#st.merge()
+	st.merge(method=0, fill_value='interpolate', interpolation_samples=0)
         print st
 
 #Se escribe la forma de onda con el directorio local
